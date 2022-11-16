@@ -1,0 +1,92 @@
+// Definição da classe
+class atleta {
+  constructor(nome, idade, peso, altura, notas){
+    this.nome = nome
+    this.idade = idade
+    this.peso = peso
+    this.altura = altura
+    this.notas = notas
+  }
+
+  calculaCategoria(){
+    if (this.idade >= 9 && this.idade <=11){
+      return "Categoria: Infantil"
+    }
+    if (this.idade >= 12 && this.idade <=13){
+      return "Categoria: Juvenil"
+    }
+    if (this.idade >= 14 && this.idade <=15){
+      return "Categoria: Intermediário"
+    }
+    if (this.idade >= 16 && this.idade <=30){
+      return "Categoria: Adulto"
+    }else {
+      return "Sem categoria"  
+    }
+  }
+
+  calculaIMC(){
+    return "IMC: " + (this.peso / (this.altura * this.altura))
+  }
+
+  obtemNomeAtleta(){
+    return `Nome: ${this.nome}`
+  }
+
+  obtemIdadeAtleta(){
+    return `Idade: ${this.idade}`
+  }
+
+  obtemPesoAtleta(){
+    return `Peso: ${this.peso}`
+  }
+  
+  obtemAlturaAtleta(){
+    return `Altura: ${this.altura}`
+  }
+
+  obtemNotasAtleta(){
+    return `Notas: ${this.notas}`
+  }
+
+  obtemNotasValidas(){
+    let media = 0
+    let notasCrescentes =  this.notas.sort((a, b) => a - b)
+    //console.log(notasCrescentes)
+    let notasValidas = notasCrescentes.slice(1,4)
+    //console.log(notasValidas)
+    let somaNotasValidas = 0
+    
+    notasValidas.forEach(function(total){
+      somaNotasValidas = somaNotasValidas + total
+     
+    })
+    //console.log(somaNotasValidas)
+    media = somaNotasValidas / notasValidas.length
+    //console.log(media)
+    return "Média válida: " + media
+  }
+}
+
+
+// Uso da classe - Declara o atleta
+
+let novoAtleta = new atleta ("Cesar Abascal", 30, 80, 1.70, [10, 9.34, 8.42, 10, 7.88]);
+
+//Nome: Cesar Abascal
+//Idade: 30
+//Peso: 80
+//Altura: 1.7
+//Notas: 10,9.34,8.42,10,7.88
+//Categoria: Adulto
+//IMC: 27.68166089965398
+//Média válida: 8.766666666666666
+
+console.log(novoAtleta.obtemNomeAtleta());
+console.log(novoAtleta.obtemIdadeAtleta());
+console.log(novoAtleta.obtemPesoAtleta());
+console.log(novoAtleta.obtemAlturaAtleta());
+console.log(novoAtleta.obtemNotasAtleta());
+console.log(novoAtleta.calculaCategoria());
+console.log(novoAtleta.calculaIMC());
+console.log(novoAtleta.obtemNotasValidas());
